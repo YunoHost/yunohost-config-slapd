@@ -28,6 +28,6 @@ if ! grep -Fq "sudoers_base" /etc/ldap/ldap.conf ; then
 	echo -e "sudoers_base ou=sudo,dc=yunohost,dc=org" >> /etc/ldap/ldap.conf
 fi
 
-service slapd reload
+service slapd force-reload
 
 exit 0
