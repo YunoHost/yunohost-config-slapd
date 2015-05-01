@@ -1,3 +1,17 @@
+yunohost-config-slapd (2.1.2) testing; urgency=low
+
+  [ Adrien Beudin ]
+  * change schema mailserver for add support quota
+  * [fix] add reload slapd service
+
+  [ julienmalik ]
+  * [fix] 'service slapd reload' does not exist, use force-reload instead
+
+  [ Adrien Beudin ]
+  * [enh] migration to cn=config for jessie
+
+ -- kload <kload@kload.fr>  Fri, 01 May 2015 15:03:56 +0000
+
 yunohost-config-slapd (2.1.1) testing; urgency=low
 
   * Bump version to 2.1.1 to bootstrap new build workflow
