@@ -19,7 +19,9 @@ then
 	if [ $(lsb_release -c | awk '{print $2}') = jessie ];
 	then
 		cp $TMP/slapd/slapd-yuno.conf /etc/ldap/slapd-yuno.conf
-		chown root:openldap /etc/ldap/slapd-yuno.conf 
+		chown root:openldap /etc/ldap/slapd-yuno.conf
+		rm -Rf /etc/ldap/slapd.d
+		mkdir /etc/ldap/slapd.d 
 		slaptest -f /etc/ldap/slapd-yuno.conf -F /etc/ldap/slapd.d/
 	else
 		cp $TMP/slapd/slapd.conf /etc/ldap/
