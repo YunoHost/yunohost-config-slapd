@@ -18,7 +18,7 @@ then
 	cp /usr/share/doc/sudo-ldap/schema.OpenLDAP /etc/ldap/schema/sudo.schema
 	if [ $(lsb_release -c | awk '{print $2}') = jessie ];
 	then
-		cp $TMP/slapd/slapd.conf /etc/ldap/slapd-yuno.conf
+		cp $TMP/slapd/slapd-yuno.conf /etc/ldap/slapd-yuno.conf
 		chown root:openldap /etc/ldap/slapd-yuno.conf 
 		slaptest -f /etc/ldap/slapd-yuno.conf -F /etc/ldap/slapd.d/
 	else
