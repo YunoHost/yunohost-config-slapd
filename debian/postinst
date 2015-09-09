@@ -4,12 +4,6 @@ DOMAIN=$(hostname -d)
 
 TMP="/usr/share/yunohost/yunohost-config"
 
-function randpass() {
-  [ "$2" == "0" ] && CHAR="[:alnum:]" || CHAR="[:graph:]"
-    cat /dev/urandom | tr -cd "$CHAR" | head -c ${1:-32}
-    echo
-}
-
 #OpenLDAP
 if [ ! -f /etc/yunohost/yunohost.conf ] || [ $(grep slapd /etc/yunohost/yunohost.conf | cut -d= -f2) = "no" ];
 then
@@ -21,12 +15,12 @@ then
 		cp $TMP/slapd/slapd-yuno.conf /etc/ldap/slapd-yuno.conf
 		chown root:openldap /etc/ldap/slapd-yuno.conf
 		rm -Rf /etc/ldap/slapd.d
-		mkdir /etc/ldap/slapd.d 
+		mkdir /etc/ldap/slapd.d
 		slaptest -f /etc/ldap/slapd-yuno.conf -F /etc/ldap/slapd.d/
 	else
 		cp $TMP/slapd/slapd.conf /etc/ldap/
 		cp $TMP/slapd/slapd /etc/default/
-		chown root:openldap /etc/ldap/slapd.conf                
+		chown root:openldap /etc/ldap/slapd.conf
         	slaptest -f /etc/ldap/slapd.conf -F /etc/ldap/slapd.d/
 	fi
         chown -R openldap:openldap /etc/ldap/schema/
